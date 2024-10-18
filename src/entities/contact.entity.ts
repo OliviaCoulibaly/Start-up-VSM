@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Contact {
@@ -12,11 +12,8 @@ export class Contact {
   email: string;
 
   @Column()
-  phone: string;  // Nouveau champ pour le numéro de téléphone
-
-  @Column('text')
   message: string;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  created_at: Date;
+  @Column({ nullable: true })
+  phone: string;  // Le champ téléphone peut être optionnel
 }
